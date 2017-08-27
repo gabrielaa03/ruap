@@ -72,12 +72,13 @@
 						<br><br>
 					</table>
 				
-							
+					
 					<div class="tableRow1">	
-				--	ovo ne isključuje jedno drugo
-					<label for="heatingLoad"><input type="radio" name="heatingLoad" id="heatingLoad">Opterećenje hlađenja</label><br/>
-					<label for="coolingLoad"><input type="radio" name="coolingLoad" id="coolingLoad">Opterećenje zagrijavanja</label><br/><br>
+					<label for="heatingLoad"><input type="radio" name="check"  id="heatingLoad"  onclick="document.getElementById('heatingLoad').checked=true;" >Opterećenje hlađenja</label><br/>
+					<label for="coolingLoad"><input type="radio" name="check"  id="coolingLoad"  onclick="document.getElementById('coolingLoad').checked=true;" >Opterećenje zagrijavanja</label><br/><br>
 				
+				
+
 					<input type="submit" name="register-user" value="Provjeri učinkovitost" class="btnCheck"><br>
 					<div class="trazenaVrijednost">Tražena vrijednost iznosi: </div> <output type="number" name="trazenaV" value="1515"></output>
 					</div>

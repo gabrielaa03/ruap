@@ -9,6 +9,8 @@ session_start();
 	$glazingArea = $_POST['GlazingArea'];
 	$glazingAreaDistribution = $_POST['GlazingAreaDistribution'];
 	
+	echo $_SESSION['model'];
+	
 	if($relativeCompactness && $surfaceArea && $wallArea  && $roofArea && $overallHeight && $orientation && $glazingArea  && $glazingAreaDistribution){
 		$connect = mysql_connect("localhost", "root", "")
 		or die ("Neuspješno spajanje na bazu.");

@@ -43,26 +43,27 @@
       $connector = mysql_connect($host,$username,$password)
           or die("Unable to connect");
         echo "Connections are made successfully::";
-      $selected = mysql_select_db("energyefficiency", $connector)
+      $selected = mysql_select_db("registration", $connector)
         or die("Unable to connect");
 
       //execute the SQL query and return records
-      $result = mysql_query("SELECT * FROM aktivnosti ");
+      $result = mysql_query("SELECT * FROM upiti ");
       ?>
-      <table border="2" style= "margin: 170px;" >
+	  <h2 class="small_title"  style= "margin:70px;">Tablica svih upita iz baze podataka</h2>
+      <table border="2" style= "margin:70px;">
       <thead>
-        <tr>
-		  <th class="tableRow2" style="color:black">Broj mjerenja</th>
-          <th class="tableRow2" >Relativna kompaktnost</th>
-          <th class="tableRow2">Površina zgrade</th>
-          <th class="tableRow2">Površina zidova</th>
-          <th class="tableRow2">Površina krova</th>
-          <th class="tableRow2">Visina cjelokupne zgrade</th>
-          <th class="tableRow2">Orijentacija</th>
-		  <th class="tableRow2">Površina prozora</th>
-		  <th class="tableRow2">Raspodjela površina</th>
-		  <th class="tableRow2">Opterećenje hlađenja</th>
-		  <th class="tableRow2">Opterećenje zagrijavanja</th>
+        <tr class="bottomBorder">
+		  <td class="tableRow2 bottomBorder"><b>Broj mjerenja</b></td>
+          <td class="tableRow2"><b>Relativna kompaktnost (m2)</b></td>
+          <td class="tableRow2"><b>Površina zgrade (m2)</b></td>
+          <td class="tableRow2"><b>Površina zidova (m2)</b></td>
+          <td class="tableRow2"><b>Površina krova (m2)</b></td>
+          <td class="tableRow2"><b>Visina cjelokupne zgrade (m)</b></td>
+          <td class="tableRow2"><b>Orijentacija</b></td>
+		  <td class="tableRow2"><b>Površina prozora (m2)</b></td>
+		  <td class="tableRow2"><b>Raspodjela površina</b></td>
+		  <td class="tableRow2"><b>Opterećenje hlađenja (%)</b></td>
+		  <td class="tableRow2"><b>Opterećenje zagrijavanja (%)</b></td>
         </tr>
       </thead>
       <tbody class="tableRow3">

@@ -52,10 +52,10 @@
 						<td class="tableRow1"><b>Površina krova<b/></td>
 					</tr>
 					<tr>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="RelativeCompactness" value="<?php if(isset($_POST['RelativeCompactness'])) echo $_POST['RelativeCompactness']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="SurfaceArea" value="<?php if(isset($_POST['SurfaceArea'])) echo $_POST['SurfaceArea']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="WallArea" value="<?php if(isset($_POST['WallArea'])) echo $_POST['WallArea']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="RoofArea" value="<?php if(isset($_POST['RoofArea'])) echo $_POST['RoofArea']; ?>"></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="RelativeCompactness" value=""></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="SurfaceArea" value=""></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="WallArea" value=""></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="RoofArea" value=""></td>
 						
 					</tr>
 					<tr>
@@ -65,23 +65,35 @@
 						<td class="tableRow1"><b>Raspodjela površina<b/></td>
 					</tr>
 					<tr>
-					<td class="tableRow1"><input type="number_format" class="demoInputBox" name="OverallHeight" value="<?php if(isset($_POST['OverallHeight'])) echo $_POST['OverallHeight']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="Orientation" value="<?php if(isset($_POST['Orientation'])) echo $_POST['Orientation']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="GlazingArea" value="<?php if(isset($_POST['GlazingArea'])) echo $_POST['GlazingArea']; ?>"></td>
-						<td class="tableRow1"><input type="number_format" class="demoInputBox" name="GlazingAreaDistribution" value="<?php if(isset($_POST['GlazingAreaDistribution'])) echo $_POST['GlazingAreaDistribution']; ?>"></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="OverallHeight" value=""></td>
+						<td class="tableRow1"><input type="text" list="orientation" name="Orientation" value=""></td>
+						<td class="tableRow1"><input type="number" step="0.01" name="GlazingArea" value=""></td>
+						<td class="tableRow1"><input type="text" list="glazingAreaDistribution" name="GlazingAreaDistribution" value=""></td>
 						<br><br>
 					</table>
-					<div class="tableRow1">
-					<input name="heatingLoad" type="radio"> Opterećenje hlađenja <br><br>
-					<input name="coolingLoad" type="radio"> Opterećenje zagrijavanja <br><br>
-	
-					<input type="submit" name="register-user" value="Provjeri učinkovitost" class="btnCheck"><br><br>
 				
-						
-					<div class="trazenaVrijednost">Tražena vrijednost iznosi: </div> <input type="number_format" name="trazenaV" value="">
+							
+					<div class="tableRow1">	
+				--	ovo ne isključuje jedno drugo
+					<label for="heatingLoad"><input type="radio" name="heatingLoad" id="heatingLoad">Opterećenje hlađenja</label><br/>
+					<label for="coolingLoad"><input type="radio" name="coolingLoad" id="coolingLoad">Opterećenje zagrijavanja</label><br/><br>
+				
+					<input type="submit" name="register-user" value="Provjeri učinkovitost" class="btnCheck"><br>
+					<div class="trazenaVrijednost">Tražena vrijednost iznosi: </div> <output type="number" name="trazenaV" value="1515"></output>
 					</div>
-
-				
 			</form>
+			<datalist id="glazingAreaDistribution">
+			  <option value="2">
+			  <option value="3">
+			  <option value="4">
+			  <option value="5"></datalist>
+			  
+			  <datalist id="orientation">
+			  <option value="0">
+			  <option value="1">
+			  <option value="2">
+			  <option value="3">
+			  <option value="4">
+			  <option value="5"></datalist>
 	</body>
 </html>

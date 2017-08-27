@@ -18,7 +18,7 @@ session_start();
 	}else{
 		 $sql = mysql_query("INSERT INTO registration (username, password, FirstName, LastName) " . "VALUES ('$username', '$password', '$firstName', '$lastName')");
 			if ($sql){
-				echo "Korisnik uspjesno registriran!";
+				echo "Korisnik uspješno registriran!";
 				header('Refresh: 2; URL = check-efficiency.php');
 			} 
 	}

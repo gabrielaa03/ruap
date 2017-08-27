@@ -12,9 +12,9 @@ session_start();
 	if($relativeCompactness && $surfaceArea && $wallArea  && $roofArea && $overallHeight && $orientation && $glazingArea  && $glazingAreaDistribution){
 		$connect = mysql_connect("localhost", "root", "")
 		or die ("Neuspješno spajanje na bazu.");
-		mysql_select_db("energyefficiency") or die("Neuspješan pronalazak baze.");
-	
-		 $sql = mysql_query("INSERT INTO novatablica (surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution, heatingLoad, coolingLoad, relativeCompactness) " . "VALUES ( '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution','$relativeCompactness')");
+		mysql_select_db("registration") or die("Neuspješan pronalazak baze.");
+		
+		 $sql = mysql_query("INSERT INTO upiti (relativeCompactness, surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution) " . "VALUES ('$relativeCompactness', '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution')");
 			if ($sql){
 				echo "Korisnik uspjesno registriran!";
 				header('Refresh: 2; URL = check-efficiency.php');

@@ -36,56 +36,56 @@
 			  </div>
 			</nav>
 			 <?php
-      $username = "root";
-      $password = "";
-      $host = "localhost";
+			 session_start();
+			 $user1 = $_SESSION['username'];
+			 $username = "root";
+			 $password = "";
+			 $host = "localhost";
 
-      $connector = mysql_connect($host,$username,$password)
-          or die("Unable to connect");
-        echo "Connections are made successfully::";
-      $selected = mysql_select_db("registration", $connector)
-        or die("Unable to connect");
+			  $connector = mysql_connect($host,$username,$password)
+				  or die("Unable to connect");
+				echo "Connections are made successfully::";
+			  $selected = mysql_select_db("registration", $connector)
+				or die("Unable to connect");
 
-      //execute the SQL query and return records
-      $result = mysql_query("SELECT * FROM upiti ");
-      ?>
-	  <h2 class="small_title"  style= "margin:70px;">Tablica svih upita iz baze podataka</h2>
-      <table border="2" style= "margin:70px;">
-      <thead>
-        <tr class="bottomBorder">
-		  <td class="tableRow2 bottomBorder"><b>Broj mjerenja</b></td>
-          <td class="tableRow2"><b>Relativna kompaktnost (m2)</b></td>
-          <td class="tableRow2"><b>Površina zgrade (m2)</b></td>
-          <td class="tableRow2"><b>Površina zidova (m2)</b></td>
-          <td class="tableRow2"><b>Površina krova (m2)</b></td>
-          <td class="tableRow2"><b>Visina cjelokupne zgrade (m)</b></td>
-          <td class="tableRow2"><b>Orijentacija</b></td>
-		  <td class="tableRow2"><b>Površina prozora (m2)</b></td>
-		  <td class="tableRow2"><b>Raspodjela površina</b></td>
-		  <td class="tableRow2"><b>Opterećenje hlađenja (%)</b></td>
-		  <td class="tableRow2"><b>Opterećenje zagrijavanja (%)</b></td>
-        </tr>
-      </thead>
-      <tbody class="tableRow3">
-        <?php
-          while( $row = mysql_fetch_assoc( $result ) ){
-            echo"<tr>
-			<td>{$row['id']}</td>
-			<td>{$row['relativeCompactness']}</td>
-            <td>{$row['surfaceArea']}</td>
-            <td>{$row['wallArea']}</td>
-            <td>{$row['roofArea']}</td>
-            <td>{$row['overallHeight']}</td>
-            <td>{$row['orientation']}</td> 
-		    <td>{$row['glazingArea']}</td> 
-			<td>{$row['glazingAreaDistribution']}</td> 
-			<td>{$row['heatingLoad']}</td> 
-			<td>{$row['coolingLoad']}</td> 
-            </tr>\n";
-          }
-        ?>
-      </tbody>
-    </table>
-     <?php mysql_close($connector); ?>
+			  //execute the SQL query and return records
+			  $result = mysql_query("SELECT * FROM upiti WHERE username='$user1'");
+			  ?>
+			  <h2 class="small_title"  style= "margin:70px;">Tablica svih upita iz baze podataka</h2>
+			  <table border="2" style= "margin:70px;">
+			  <thead>
+				<tr class="bottomBorder">
+				  <td class="tableRow2"><b>Relativna kompaktnost (m2)</b></td>
+				  <td class="tableRow2"><b>Površina zgrade (m2)</b></td>
+				  <td class="tableRow2"><b>Površina zidova (m2)</b></td>
+				  <td class="tableRow2"><b>Površina krova (m2)</b></td>
+				  <td class="tableRow2"><b>Visina cjelokupne zgrade (m)</b></td>
+				  <td class="tableRow2"><b>Orijentacija</b></td>
+				  <td class="tableRow2"><b>Površina prozora (m2)</b></td>
+				  <td class="tableRow2"><b>Raspodjela površina</b></td>
+				  <td class="tableRow2"><b>Opterećenje hlađenja (%)</b></td>
+				  <td class="tableRow2"><b>Opterećenje zagrijavanja (%)</b></td>
+				</tr>
+			  </thead>
+			  <tbody class="tableRow3">
+				<?php
+				  while( $row = mysql_fetch_assoc( $result ) ){
+					echo"<tr>
+					<td>{$row['relativeCompactness']}</td>
+					<td>{$row['surfaceArea']}</td>
+					<td>{$row['wallArea']}</td>
+					<td>{$row['roofArea']}</td>
+					<td>{$row['overallHeight']}</td>
+					<td>{$row['orientation']}</td> 
+					<td>{$row['glazingArea']}</td> 
+					<td>{$row['glazingAreaDistribution']}</td> 
+					<td>{$row['heatingLoad']}</td> 
+					<td>{$row['coolingLoad']}</td> 
+					</tr>\n";
+				  }
+				?>
+			  </tbody>
+			</table>
+			 <?php mysql_close($connector); ?>
 	</body>
 </html>

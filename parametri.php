@@ -35,7 +35,7 @@
                         <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
                             <div class="col-lg-12">
 							<div class="text-center"><h3><b>Login</b></h3></div>
-                                <form id="ajax-login-form" action = "validate.php" method = "post" role="form" autocomplete="off">
+                                <form id="ajax-login-form" action = "validate.php?" method = "post" role="form" autocomplete="off">
                                     <div class="form-group">
                                         <label for="username">Korisničko ime</label>
                                         <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
@@ -64,10 +64,11 @@
 				</div>
 			  </div>
 			</nav>
-			
 			<?php
-			session_start(); 
-			$_SESSION['username'] = $_POST['username'];?>
+			session_start();
+			$user = ($_POST['username']);
+			$_SESSION['user1'] = $user;
+			?>
 			
 			<article class="article2" style="margin-top:70px">
 				<h2 class="small_title">Opis parametara</h2>

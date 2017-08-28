@@ -64,6 +64,11 @@
 				</div>
 			  </div>
 			</nav>
+			<?php
+			session_start();
+			$user = ($_POST['username']);
+			$_SESSION['user1'] = $user;
+			?>
 			
 			<article class="article2" style="margin-top:50px; margin-left:415px;margin-right:10px;">
 				<h2 class="small_title">Procjena energetskih parametara zgrade</h2>
@@ -85,9 +90,8 @@
 							<li>površina prozora</li>
 							<li>raspodjela površina</li>
 						</ul>
-						
 						<b></p>
-									<br><br>					
+						<br><br>					
 			</article>
 	</body>
 </html>

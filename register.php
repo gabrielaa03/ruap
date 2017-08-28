@@ -96,6 +96,11 @@
 					</tr>
 				</table>
 			</form>
+			<?php
+			session_start();
+			$user = ($_POST['username']);
+			$_SESSION['user1'] = $user;
+			?>
 		</body>
 </html>
 

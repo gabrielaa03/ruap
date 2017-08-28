@@ -1,4 +1,5 @@
 <?php
+session_start();
 $relativeCompactness = $_POST['RelativeCompactness'];
 $surfaceArea = $_POST['SurfaceArea'];
 $wallArea = $_POST['WallArea'];
@@ -8,8 +9,7 @@ $orientation = $_POST['Orientation'];
 $glazingArea = $_POST['GlazingArea'];
 $glazingAreaDistribution = $_POST['GlazingAreaDistribution'];
 $radioButton = $_POST['check'];  
-$myVar = $_SESSION['username'];
-
+$user1 = $_SESSION['username'];
 
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
@@ -54,15 +54,10 @@ if($relativeCompactness && $surfaceArea && $wallArea  && $roofArea && $overallHe
 			curl_close($ch);
 			var_dump ($response);
 			$result = $response["Results"]["output1"]["value"]["Values"][0][10];	
-
-			
-			 $sql = mysqli_query($connect, "INSERT INTO upiti (relativeCompactness, surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution, heatingLoad, coolingLoad) " . "VALUES ('$relativeCompactness', '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution', $result, 0)");
-			if ($sql){
-				header('Refresh: 2; URL = check-efficiency.php');
-			} 
-			else{
-				echo "Ponovite upit!";
-			}      
+		
+			$_SESSION['result'] = $result;
+			$sql = mysqli_query($connect, "INSERT INTO upiti (relativeCompactness, surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution, heatingLoad, coolingLoad, username) " . "VALUES ('$relativeCompactness', '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution', $result, 0, '$user1')");
+	      
 		}else if ($radioButton == "coolingLoad"){
 			error_reporting(E_ALL);
 			ini_set('display_errors', 0);	

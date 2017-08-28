@@ -63,8 +63,8 @@
 				  <td class="tableRow2"><b>Orijentacija</b></td>
 				  <td class="tableRow2"><b>Površina prozora (m2)</b></td>
 				  <td class="tableRow2"><b>Raspodjela površina</b></td>
-				  <td class="tableRow2"><b>Opterećenje hlađenja (%)</b></td>
 				  <td class="tableRow2"><b>Opterećenje zagrijavanja (%)</b></td>
+				  <td class="tableRow2"><b>Opterećenje hlađenja (%)</b></td>
 				</tr>
 			  </thead>
 			  <tbody class="tableRow3">

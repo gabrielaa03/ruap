@@ -48,7 +48,8 @@
 					<li><b>Visina cjelokupne zgrade</b> - visina zgrade u m počevši od razine zemljane površine</li> 
 					<li><b>Orijentacija</b> - orijentacija zgrade</li>
 					<li><b>Površina prozora</b> - ostakljena površina (%)</li>
-					<li><b>Raspodjela površina</b> - cjekoupna, južna, sjeverna, istočna i zapadna</li>
+					<li><b>Raspodjela površina</b> - ujednačen, južna, sjeverna, istočna i zapadna(0-nije ostakljeno, 1-25% ostakljeno sa svake strane, 2-55% sa sjevera i 15% sa ostalih strana,
+					3-55% sa istoka i s ostalih strana 15%, 4-55% sa juga i ostali 15%, 5-55% sa zapada i 15% sa ostalih</li>
 					<li><b>Opterećenje zagrijavanje</b> - količina topline po jedinici vremena koja je potrebna kako bi se održavala temperatura zgrade na određenoj razini</li>
 					<li><b>Opterećenje hlađenja </b> - brzina kojom je potrebn ukloniti toplinu iz prostora kako bi se održala konstantna temperatura i vlaga.</li>
 				</ul>

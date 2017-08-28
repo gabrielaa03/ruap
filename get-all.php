@@ -44,7 +44,6 @@
 
 			  $connector = mysql_connect($host,$username,$password)
 				  or die("Unable to connect");
-				echo "Connections are made successfully::";
 			  $selected = mysql_select_db("registration", $connector)
 				or die("Unable to connect");
 

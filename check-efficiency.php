@@ -9,6 +9,7 @@
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		
+		
 	</head>
 	<body>
 	<nav class="navbar navbar-default navbar-fixed-top" >
@@ -52,10 +53,10 @@
 						<td class="tableRow1"><b>Površina krova<b/></td>
 					</tr>
 					<tr>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="RelativeCompactness" value="<?php if(isset($_POST['RelativeCompactness'])) echo $_POST['RelativeCompactness']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="SurfaceArea" value="<?php if(isset($_POST['SurfaceArea'])) echo $_POST['SurfaceArea']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="WallArea" value="<?php if(isset($_POST['WallArea'])) echo $_POST['WallArea']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="RoofArea" value="<?php if(isset($_POST['RoofArea'])) echo $_POST['RoofArea']; ?>"></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.01" name="RelativeCompactness" value="<?php if(isset($_POST['RelativeCompactness'])) echo $_POST['RelativeCompactness']; ?>"></td>
+						<td class="tableRow1"><input type="number" name="SurfaceArea" value="<?php if(isset($_POST['SurfaceArea'])) echo $_POST['SurfaceArea']; ?>"></td>
+						<td class="tableRow1"><input type="number" name="WallArea" value="<?php if(isset($_POST['WallArea'])) echo $_POST['WallArea']; ?>"></td>
+						<td class="tableRow1"><input type="number" name="RoofArea" value="<?php if(isset($_POST['RoofArea'])) echo $_POST['RoofArea']; ?>"></td>
 						
 					</tr>
 					<tr>
@@ -65,10 +66,10 @@
 						<td class="tableRow1"><b>Raspodjela površina<b/></td>
 					</tr>
 					<tr>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="OverallHeight" value="<?php if(isset($_POST['OverallHeight'])) echo $_POST['OverallHeight']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.25" name="Orientation" value="<?php if(isset($_POST['Orientation'])) echo $_POST['Orientation']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="GlazingArea" value="<?php if(isset($_POST['GlazingArea'])) echo $_POST['GlazingArea']; ?>"></td>
-						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="GlazingAreaDistribution" value="<?php if(isset($_POST['GlazingAreaDistribution'])) echo $_POST['GlazingAreaDistribution']; ?>"></td>
+						<td class="tableRow1"><input type="number" name="OverallHeight" value="<?php if(isset($_POST['OverallHeight'])) echo $_POST['OverallHeight']; ?>"></td>
+						<td class="tableRow1"><input type="list" list="orientationList" name="Orientation" value="<?php if(isset($_POST['Orientation'])) echo $_POST['Orientation']; ?>"></td>
+						<td class="tableRow1"><input type="number" name="GlazingArea" value="<?php if(isset($_POST['GlazingArea'])) echo $_POST['GlazingArea']; ?>"></td>
+						<td class="tableRow1"><input type="list" list="glazingAreaDistributionList" name="GlazingAreaDistribution" value="<?php if(isset($_POST['GlazingAreaDistribution'])) echo $_POST['GlazingAreaDistribution']; ?>"></td>
 						<br><br>
 					</table>
 				
@@ -80,14 +81,28 @@
 				
 
 					<input type="submit" name="provjeri" value="Provjeri učinkovitost" class="btnCheck"><br>
-					<div class="trazenaVrijednost">Tražena vrijednost iznosi: <input name="vrijednost" id="vrijednost"  value="<?php echo $response["Results"]["output1"]["value"]["Values"][0][10];; ?>> </div> 
+					<div class="trazenaVrijednost">Tražena vrijednost iznosi: <input type="number" name="vrijednost" id="vrijednost"  value=""> </div> 
 					</div>
 			</form>
-
+		<datalist id="orientationList">
+		  <option value="2">
+		  <option value="3">
+		  <option value="4">
+		  <option value="5">
+		</datalist>
+		
+		<datalist id="glazingAreaDistributionList">
+		  <option value="0">
+		  <option value="1">
+		  <option value="2">
+		  <option value="3">
+		  <option value="4">
+		  <option value="5">
+		</datalist>
+		
 		<?php
 		function displayValue()
-		{
-			
+		{ 	session_start();
 			$relativeCompactness = $_POST['RelativeCompactness'];
 			$surfaceArea = $_POST['SurfaceArea'];
 			$wallArea = $_POST['WallArea'];
@@ -97,7 +112,7 @@
 			$glazingArea = $_POST['GlazingArea'];
 			$glazingAreaDistribution = $_POST['GlazingAreaDistribution'];
 			$radioButton = $_POST['check'];  
-			session_start();
+		
 			$user1 = $_SESSION['username'];
 
 			$url = 'https://ussouthcentral.services.azureml.net/workspaces/4efe196c92aa4ca282f0817e9c7fd6f0/services/41db5b135c2147b4b53f4ed91f8d32ed/execute?api-version=2.0&details=true';
@@ -138,10 +153,14 @@
 
 						$response  = json_decode(curl_exec($ch), true);
 						curl_close($ch);
-						var_dump ($response);
 						$result =$response["Results"]["output1"]["value"]["Values"][0][10];	
-
-						$sql = mysqli_query($connect, "INSERT INTO upiti (relativeCompactness, surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution, heatingLoad, coolingLoad, username) " . "VALUES ('$relativeCompactness', '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution', number_format((double)$result, 2, '.', '')$result, 0, '$user1')");
+						echo $result;
+						?>
+						<script type="text/javascript"> 
+						document.getElementById("vrijednost").value = $result;
+						</script>
+						<?php
+						$sql = mysqli_query($connect, "INSERT INTO upiti (relativeCompactness, surfaceArea, wallArea, roofArea, overallHeight, orientation, glazingArea, glazingAreaDistribution, heatingLoad, coolingLoad, username) " . "VALUES ('$relativeCompactness', '$surfaceArea', '$wallArea', '$roofArea', '$overallHeight', '$orientation', '$glazingArea', '$glazingAreaDistribution', $result, 0, '$user1')");
 					  
 					}else if ($radioButton == "coolingLoad"){
 						error_reporting(E_ALL);
@@ -185,12 +204,14 @@
 						}   
 					}
 				}
-		}
-		
+			}
 			if(isset($_POST['provjeri']))
 			{
 			   displayValue();
-			} 
+			}
+			 
 		?>
+		
+		
 	</body>
 </html>

@@ -171,7 +171,7 @@
 						error_reporting(E_ALL);
 						ini_set('display_errors', 0);
 					
-						$data = array(
+						$data1 = array(
 									'Inputs'=> array(
 										'input1'=> array(
 											'ColumnNames' => array ('Relative Compactness', 'Surface Area', 'Wall Area', 'Roof Area', 'Overall Height', 
@@ -181,7 +181,7 @@
 									),
 										'GlobalParameters' => new StdClass(),
 								);
-						$body1 = json_encode($data);
+						$body1 = json_encode($data1);
 
 						$ch1 = curl_init();
 						curl_setopt($ch1, CURLOPT_URL, $url2);
@@ -193,6 +193,7 @@
 
 						$response1  = json_decode(curl_exec($ch1), true);
 						curl_close($ch1);
+						
 						$result =$response1["Results"]["output1"]["value"]["Values"][0][10];	
 						$result1 = ($result * (48.1-10.9)) + 10.9 ;
 						echo round($result1, 4);echo "J";

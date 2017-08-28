@@ -35,9 +35,9 @@
 				</div>
 			  </div>
 			</nav>
+
 			
-			
-			<form name="frmRegistration" method="post" action="saveparamters.php">
+			<form name="frmRegistration" method="post" action="request.php">
 				<table border="0" class="tableForChecking" >
 					<?php if(!empty($success_message)) { ?>	
 					<div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
@@ -52,10 +52,10 @@
 						<td class="tableRow1"><b>Površina krova<b/></td>
 					</tr>
 					<tr>
-						<td class="tableRow1"><input type="number" step="0.01" name="RelativeCompactness" value=""></td>
-						<td class="tableRow1"><input type="number" step="0.01" name="SurfaceArea" value=""></td>
-						<td class="tableRow1"><input type="number" step="0.01" name="WallArea" value=""></td>
-						<td class="tableRow1"><input type="number" step="0.01" name="RoofArea" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="RelativeCompactness" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="SurfaceArea" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="WallArea" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="RoofArea" value=""></td>
 						
 					</tr>
 					<tr>
@@ -65,17 +65,17 @@
 						<td class="tableRow1"><b>Raspodjela površina<b/></td>
 					</tr>
 					<tr>
-						<td class="tableRow1"><input type="number" step="0.01" name="OverallHeight" value=""></td>
-						<td class="tableRow1"><input type="text" list="orientation" name="Orientation" value=""></td>
-						<td class="tableRow1"><input type="number" step="0.01" name="GlazingArea" value=""></td>
-						<td class="tableRow1"><input type="text" list="glazingAreaDistribution" name="GlazingAreaDistribution" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="OverallHeight" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="Orientation" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="GlazingArea" value=""></td>
+						<td class="tableRow1"><input type="number" min="0.00" max="1.00" step="0.1" name="GlazingAreaDistribution" value=""></td>
 						<br><br>
 					</table>
 				
 					
 					<div class="tableRow1">	
-					<label for="heatingLoad"><input type="radio" name="check"  id="heatingLoad"  onclick="document.getElementById('heatingLoad').checked=true;" >Opterećenje hlađenja</label><br/>
-					<label for="coolingLoad"><input type="radio" name="check"  id="coolingLoad"  onclick="document.getElementById('coolingLoad').checked=true;" >Opterećenje zagrijavanja</label><br/><br>
+					<label for="coolingLoad"><input type="radio" name="check"  value="coolingLoad">Opterećenje hlađenja</label><br/>
+					<label for="heatingLoad"><input type="radio" name="check"  value="heatingLoad">Opterećenje zagrijavanja</label><br/><br>
 				
 				
 
@@ -83,18 +83,5 @@
 					<div class="trazenaVrijednost">Tražena vrijednost iznosi: </div> <output type="number" name="trazenaV" value="1515"></output>
 					</div>
 			</form>
-			<datalist id="glazingAreaDistribution">
-			  <option value="2">
-			  <option value="3">
-			  <option value="4">
-			  <option value="5"></datalist>
-			  
-			  <datalist id="orientation">
-			  <option value="0">
-			  <option value="1">
-			  <option value="2">
-			  <option value="3">
-			  <option value="4">
-			  <option value="5"></datalist>
 	</body>
 </html>

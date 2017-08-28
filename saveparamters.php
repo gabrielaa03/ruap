@@ -8,6 +8,7 @@ session_start();
 	$orientation = $_POST['Orientation'];
 	$glazingArea = $_POST['GlazingArea'];
 	$glazingAreaDistribution = $_POST['GlazingAreaDistribution'];
+	$checked = $_POST[check];
 	
 	echo $_SESSION['model'];
 	

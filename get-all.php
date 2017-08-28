@@ -24,8 +24,8 @@
 
 				<div class="collapse navbar-collapse my" >
 				   <ul class="nav navbar-nav navbar-center"> 
-					<li><a href="welcomepage.html" >O energetskoj učinkovitosti</a></li>
-					<li><a href="parametri.php">Parametri procjenjivanja</a></li>
+					<li><a href="welcomepagelogged.html" >O energetskoj učinkovitosti</a></li>
+					<li><a href="parametrilogged.php">Parametri procjenjivanja</a></li>
 					<li ><a href="check-efficiency.php">Ispitaj učinkovitost</a></li>
 					<li class="active"><a href="#" href="get-all.php">Popis svih ispitivanja</a></li>
 				</ul>
@@ -79,8 +79,8 @@
             <td>{$row['orientation']}</td> 
 		    <td>{$row['glazingArea']}</td> 
 			<td>{$row['glazingAreaDistribution']}</td> 
-			<td>{$row['heating Load']}</td> 
-			<td>{$row['cooling Load']}</td> 
+			<td>{$row['heatingLoad']}</td> 
+			<td>{$row['coolingLoad']}</td> 
             </tr>\n";
           }
         ?>

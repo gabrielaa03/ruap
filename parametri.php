@@ -65,6 +65,10 @@
 			  </div>
 			</nav>
 			
+			<?php
+			session_start(); 
+			$_SESSION['username'] = $_POST['username'];?>
+			
 			<article class="article2" style="margin-top:70px">
 				<h2 class="small_title">Opis parametara</h2>
 				<p>
